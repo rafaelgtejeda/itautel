@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiHost: 'https://agdo-server.appspot.com/',
+  hostUrl: 'https://agdo-server.appspot.com/',
 };

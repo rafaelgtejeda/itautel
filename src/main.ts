@@ -8,5 +8,12 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+export function getBaseUrl() {
+  return environment.apiHost;
+}
+
+const providers = [{ provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }];
+
+let p = platformBrowserDynamic(providers).bootstrapModule(AppModule);
+p.then(() => { (<any>window).appBootstrap && (<any>window).appBootstrap(); })
+// .catch(err => console.error(err));
